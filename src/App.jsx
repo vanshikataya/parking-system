@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import AdminPage from './pages/AdminPage';
 import UserPage from './pages/UserPage';
+import BillingPage from './pages/BillingPage';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<UserPage />} />
           <Route path="/admin" element={<AdminPage />} />
+          <Route path="/billing" element={<BillingPage />} />
         </Routes>
       </main>
 

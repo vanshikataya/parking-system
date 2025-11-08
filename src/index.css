@@ -1,19 +1,254 @@
-:root{
-  --bg:#f7f8fb;
-  --card:#fff;
-  --muted:#666;
-  --accent:#2b6ef6;
+:root {
+  --bg: #f7f8fb;
+  --card: #fff;
+  --muted: #666;
+  --accent: #2b6ef6;
+  --danger: #d9534f;
+  --border: #e2e8f0;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
-body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--bg);}
-.app-header{background:linear-gradient(90deg,#2b6ef6,#6a9cff);color:#fff;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;}
-.app-header a{color:#fff;text-decoration:none;margin-left:15px;font-weight:600;}
-.app-main{padding:20px;max-width:1100px;margin:0 auto;}
-.card{background:var(--card);padding:16px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:20px;}
-.slots-grid{display:flex;gap:10px;flex-wrap:wrap;}
-.slot-card{width:130px;border:1px solid #e2e8f0;border-radius:8px;padding:8px;background:#fff;}
-.slot-free{box-shadow:inset 0 0 0 3px rgba(0,200,0,0.1);}
-.slot-occupied{box-shadow:inset 0 0 0 3px rgba(255,0,0,0.1);}
-.slot-reserved{box-shadow:inset 0 0 0 3px rgba(255,165,0,0.1);}
-button{padding:6px 8px;border:none;border-radius:6px;background:var(--accent);color:#fff;cursor:pointer;margin-right:6px;}
-button.danger{background:#d9534f;}
-input,textarea,select{width:100%;padding:8px;margin:6px 0;border:1px solid #ddd;border-radius:8px;}
+
+body {
+  margin: 0;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: #111;
+}
+
+.app-header {
+  background: linear-gradient(90deg, #2b6ef6, #6a9cff);
+  color: #fff;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.app-header a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 15px;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.app-header a:hover {
+  opacity: 0.85;
+}
+
+.app-main {
+  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+h2, h3, h4 {
+  margin-top: 0;
+  color: #111;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 8px 10px;
+  margin: 6px 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  background: #fff;
+  transition: border-color 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(43, 110, 246, 0.1);
+}
+
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 8px;
+  font-size: 14px;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background: #2257d9;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button.danger {
+  background: var(--danger);
+}
+
+button.danger:hover {
+  background: #c13f3a;
+}
+
+/* Layout for lots */
+.lots-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.lot {
+  width: 100%;
+  border: 1px solid var(--border);
+  padding: 12px;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.lot-head {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+.lot-head h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.lot-actions button {
+  margin-top: 6px;
+  font-size: 13px;
+  padding: 6px 10px;
+}
+
+/* Slot grid and cards */
+.slots-grid {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.slot-card {
+  width: 140px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  background: var(--card);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  transition: transform 0.1s ease;
+}
+
+.slot-card:hover {
+  transform: translateY(-2px);
+}
+
+.slot-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.slot-type {
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: capitalize;
+}
+
+.slot-body {
+  font-size: 13px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.slot-actions button {
+  font-size: 13px;
+  padding: 6px 8px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+
+/* Status highlights */
+.slot-free {
+  box-shadow: inset 0 0 0 3px rgba(0, 200, 0, 0.1);
+}
+
+.slot-occupied {
+  box-shadow: inset 0 0 0 3px rgba(255, 0, 0, 0.1);
+}
+
+.slot-reserved {
+  box-shadow: inset 0 0 0 3px rgba(255, 165, 0, 0.1);
+}
+
+/* Checkbox rows for charging port toggles */
+label {
+  font-size: 13px;
+  color: #333;
+}
+
+label input[type="checkbox"] {
+  accent-color: var(--accent);
+  margin-right: 6px;
+  cursor: pointer;
+}
+
+/* Page layout */
+.page.admin,
+.page.user {
+  padding-bottom: 60px;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Small-screen support */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+  .slots-grid {
+    justify-content: center;
+  }
+  .slot-card {
+    width: 120px;
+  }
+  .lot {
+    width: 100%;
+  }
+}
